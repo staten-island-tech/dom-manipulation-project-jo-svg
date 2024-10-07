@@ -5,7 +5,7 @@ function changeColor(){
     let button = document.querySelector(".search");
     console.log(button)
     button.addEventListener("click", function (event){
-        event.preventDefault();
+        event.preventDefault(); 
         console.log(event.target);
     });
 }
