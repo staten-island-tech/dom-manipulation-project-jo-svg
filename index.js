@@ -5,7 +5,7 @@ const DOMSelectors = {
     card: document.querySelector(".card"), 
     bg_color: document.querySelector(".bg-color"),
     url: document.querySelector(".url"),
-
+    p : document.querySelector(".paragraph")
 }
 /* function submit(){
     let sub_button = document.querySelector(".search");
@@ -14,17 +14,39 @@ const DOMSelectors = {
         console.log(event.target);
     });
 } */
-function values(){
+function Create_card(){
+    //create a function that only allows you to submit if all the stuff has an input, DO TS AT HOME 
+    let card_count = document.querySelectorAll(".card").length; 
+    //allows for you to see the amount of cards 
     DOMSelectors.form.addEventListener("submit", function(event){
         console.log("submit");
         event.preventDefault(); 
-        let inputs = [
-            DOMSelectors.header.value,DOMSelectors.bg_color.value,DOMSelectors.url.value
-        ]
-        console.log(inputs)
+        let p = DOMSelectors.p.value;
+        let header = DOMSelectors.header.value;
+        let url = DOMSelectors.url.value;
+        let bg_color = DOMSelectors.bg_color.value;
+        //t
+        if (!header || !url || !bg_color || !p) {
+            alert("Please fill in all fields.");
+            //alert sends an alert to the user (they have to press ok) if the function is true
+            return; // Exit the function if any field is empty
+        }
+        DOMSelectors.container.insertAdjacentHTML("beforeend",
+            `<div class="card">
+            <h1>${header}</h1>
+            <img src="${url}" alt="">
+            <p> ${p}</p>
+            <button class="remove-btn">remove</button>
+            </div>`
+        );
+        DOMSelectors.header.value = '';
+        DOMSelectors.bg_color.value = '';
+        DOMSelectors.url.value = '';
+        DOMSelectors.p.value = '';
+        //this makes the value back to nothing once the stuff is submited
     })
 }
-values()
-submit();
+Create_card();
+
 
 
