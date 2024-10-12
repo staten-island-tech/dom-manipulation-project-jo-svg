@@ -1,7 +1,10 @@
-*{
+body, *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+body{
+    overflow-x: hidden;
 }
 
 .home{
@@ -15,27 +18,46 @@ nav{
     keeping it in the same place even as the user scrolls. */
     top: 0;
     z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+    padding: 10px;
 }
+nav h1{
+    color: white;
+    padding: 10px 0 10px 10%;
+    font-size: 3rem;
+    
+}
+
 nav ul{
     padding: 10px;
     display: flex;
     justify-content: flex-end;
     column-gap: 3rem;
+    margin-right: 7%;
 }
 nav ul li:hover{
     cursor: pointer;
     background-color: white;
 }
 nav ul li{
-    padding: 4px;
     border-radius: 5px;
     list-style-type: none;
-    transition: 0.3s;
+    transition: 0.5s;
+    
 }
 nav ul li a{
+    padding: 10px;
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.5s;
+}
+nav ul li a:hover{
+    color: black;
 }
 .bg-video{
     width: 100%;
@@ -46,7 +68,7 @@ nav ul li a{
     z-index: 0;
 }
 .content{
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centers content */
@@ -58,28 +80,31 @@ nav ul li a{
     z-index: 1;
 }
 .content h1{
+    font-family: 'Poppins', sans-serif;
     font-size: 160px;
     font-weight: 600;
-    border: 2px solid #fff;
     padding: 14px 70px;
+    transition: 0.5s;
+}
+.content h1:hover{
+    -webkit-text-stroke: 2px #fff;
+    color: transparent;
 }
 .btn{
-    width: 8rem;
-    height: 3rem;
-    border-radius: 6px;  
-    border: none;
+    width: 15rem;
+    height: 4rem;
+    border-radius: 50px;  
+    border: 1px solid;
     padding: 5px;
     transition: background-color 0.5s, transform 0.8s;
-    position: relative;
-    z-index: 10;
     margin: 0 auto;
-    display: block;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
 } 
 
 .btn:hover{
     cursor: pointer;
-    text-decoration: underline;
-    background-color: rgba(255, 255, 255, 0.8);
     transform: scale(1.05);
 }
 
@@ -88,8 +113,54 @@ form{
     display: flex;
     flex-direction: row;
     column-gap: 10px;
-    z-index: 3;
+ 
 }
 .container {
     display: flex;
+    width: 90vw;
+    margin: 2rem auto;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}
+.card{
+    width: 23%;
+    /*set width to 23% if its 4 by 4, 26% if 3 by 3*/
+    height: 40rem;
+    border: 1px solid white;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    overflow: hidden;
+    padding-bottom: 10px;
+    position: relative;
+    transition: 0.5s;
+    justify-content: center;
+    align-items: center;
+    animation: slide-in 1s;
+    box-shadow: 10px 16px #000000;
+}
+@media screen and (max-width: 1237px){
+    .container{
+        flex-direction: row;
+    }
+    nav ul{
+        column-gap: 10px;
+    }
+    .card{
+        width: 40%;
+    }
+} 
+@media screen and (max-width: 800px){
+    .content h1{
+        font-size: 5rem;
+    }
+    .container{
+        flex-direction: row;
+    }
+    .card{
+        width: 70%;
+    }
 }
