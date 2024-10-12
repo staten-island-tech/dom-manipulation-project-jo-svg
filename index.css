@@ -1,3 +1,95 @@
 *{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.home{
+    height: 60rem;
+}
+nav{
+    width: 100%;
+    position: fixed;
+    /* absolute doesnt work for ts because the other element didnt include/aware of 
+    the nav bar, however, position: fixed positions an element relative to the browser window,
+    keeping it in the same place even as the user scrolls. */
+    top: 0;
+    z-index: 999;
+}
+nav ul{
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 3rem;
+}
+nav ul li:hover{
+    cursor: pointer;
+    background-color: white;
+}
+nav ul li{
+    padding: 4px;
+    border-radius: 5px;
+    list-style-type: none;
+    transition: 0.3s;
+}
+nav ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+}
+.bg-video{
+    width: 100%;
+    height: 60rem;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+.content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers content */
+    color: white;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+.content h1{
+    font-size: 160px;
+    font-weight: 600;
+    border: 2px solid #fff;
+    padding: 14px 70px;
+}
+.btn{
+    width: 8rem;
+    height: 3rem;
+    border-radius: 6px;  
+    border: none;
+    padding: 5px;
+    transition: background-color 0.5s, transform 0.8s;
+    position: relative;
+    z-index: 10;
+    margin: 0 auto;
+    display: block;
+} 
+
+.btn:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+
+form{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    z-index: 3;
+}
+.container {
+    display: flex;
 }
