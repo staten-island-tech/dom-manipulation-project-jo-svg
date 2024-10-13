@@ -49,12 +49,12 @@ function Create_card(){
         //this makes the value back to nothing once the stuff is submited, ts is one way to do it*/
         DOMSelectors.form.reset();
 
-        const remove_btn= document.querySelectorAll(".remove-btn")
+        const remove_btn= document.querySelectorAll(".remove-btn");
         remove_btn.forEach(button =>{
             button.addEventListener("click", function(){
             this.parentElement.remove();
             //removes the parent of the button element
-        });
+        }); 
     });
 });
 }
