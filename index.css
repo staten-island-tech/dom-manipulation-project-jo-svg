@@ -7,6 +7,17 @@ body{
     overflow-x: hidden;
 }
 
+@keyframes appear{
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
+
 .home{
     height: 60rem;
 }
@@ -20,10 +31,17 @@ nav{
     z-index: 999;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     border-bottom: 1px solid white;
+    justify-content: space-between;
     padding: 10px;
+    transition: background-color 0.4s ease-in-out;
 }
+
+nav.scrolled{
+    background-color: rgb(0, 4, 35);
+    opacity: 0.98;
+}
+
 nav h1{
     color: white;
     padding: 10px 0 10px 10%;
@@ -102,6 +120,10 @@ nav ul li a:hover{
     background-color: transparent;
     color: #fff;
 } 
+.btn a{
+    color: white;
+    text-decoration: none;
+}
 
 .btn:hover{
     cursor: pointer;
@@ -113,8 +135,12 @@ form{
     display: flex;
     flex-direction: row;
     column-gap: 10px;
- 
 }
+
+.search{
+    border-radius: 10px;
+}
+
 .container {
     display: flex;
     width: 90vw;
@@ -137,10 +163,23 @@ form{
     padding-bottom: 10px;
     position: relative;
     transition: 0.5s;
-    justify-content: center;
-    align-items: center;
     animation: slide-in 1s;
-    box-shadow: 10px 16px #000000;
+}
+.card img{
+    align-self: center;
+    margin-top: 10px;
+    height: 30rem;
+    width: 95%;
+    border-radius: 2rem;
+    object-fit: cover;
+}
+.card h1, p{
+    margin-left: 3rem;
+    margin-top: 10px;
+}
+.remove-btn{
+    border: none;
+    border-radius: 10px;
 }
 @media screen and (max-width: 1237px){
     .container{
