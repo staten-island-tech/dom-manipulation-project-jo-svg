@@ -36,19 +36,15 @@ nav{
     padding: 10px;
     transition: background-color 0.4s ease-in-out;
 }
-
 nav.scrolled{
     background-color: rgb(0, 4, 35);
     opacity: 0.98;
 }
-
 nav h1{
     color: white;
     padding: 10px 0 10px 10%;
     font-size: 3rem;
-    
 }
-
 nav ul{
     padding: 10px;
     display: flex;
@@ -58,7 +54,6 @@ nav ul{
 }
 nav ul li:hover{
     cursor: pointer;
-    background-color: white;
 }
 nav ul li{
     border-radius: 5px;
@@ -75,7 +70,7 @@ nav ul li a{
     transition: 0.5s;
 }
 nav ul li a:hover{
-    color: black;
+    text-decoration: underline #fff;
 }
 .bg-video{
     width: 100%;
@@ -124,23 +119,42 @@ nav ul li a:hover{
     color: white;
     text-decoration: none;
 }
-
 .btn:hover{
     cursor: pointer;
     transform: scale(1.05);
 }
-
-
+.inputPart{
+    width: 95%;
+    background-color: rgb(12, 51, 124);
+    margin: 10px auto; /* Use 'auto' for left and right margins */
+    height: 4rem;
+    border-radius: 10px;
+    align-content: center;
+    display: block;
+}
 form{
     display: flex;
     flex-direction: row;
-    column-gap: 10px;
+    justify-content: space-between; 
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+input{
+    height: 2rem;
+    border-radius: 10px;
+    border: 3px solid white;
+    
 }
 
+.bg-color{
+    width: 4rem;
+}
 .search{
     border-radius: 10px;
+    width: 7rem;
+    height: 2rem;
 }
-
 .container {
     display: flex;
     width: 90vw;
@@ -173,13 +187,64 @@ form{
     border-radius: 2rem;
     object-fit: cover;
 }
-.card h1, p{
-    margin-left: 3rem;
-    margin-top: 10px;
+.card h1, 
+.card p{
+    margin: 10px 0; 
+    padding: 0 1rem; 
 }
 .remove-btn{
+    cursor: pointer;
+    align-items: center;
+    width: 7rem;
+    height: 3rem;
     border: none;
+    background-color: #5834fc;
+    color: #fffeff;
+    font-size: 1rem;
     border-radius: 10px;
+    overflow: hidden;
+    font-weight: 600;
+    transition: .3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    align-self: center; /* Center the button */
+    margin-top: auto; /* Push the button to the bottom */
+    display: flex; /* Make the button a flex container for the icon and text */
+    justify-content: center; /* Center the content inside the button */
+}
+.trash{
+    position: relative;
+    width: 1.5rem; /* Width of the trash can */
+    height: 2rem; /* Height of the trash can */
+    margin-right: 5px;
+    margin-top: 20px;
+    transition: 0.5s;
+}
+.top {
+    width: 16px;
+    height: 3px; 
+    background-color: #ffffff; 
+    border-top-left-radius: 23.8px;
+    border-top-right-radius: 23.8px;
+    position: absolute;
+    margin-top: -8px;
+    margin-left: -1px;
+    transition: 0.5s;
+}
+.bottom{
+    border-top: 3.5px solid #FFF;
+    border-left: 7.5px solid #FFF;
+    border-right: 7.5px solid #FFF;
+    border-radius: 2px 2px 5px 5px;
+    position: relative;
+    transition: transform 0.5s; 
+}
+.remove-btn:hover .top{
+    margin-top: -12px;
+    transform: rotate(-20deg);
+    translate: -2px;
+}
+.remove-btn:hover .trash{
+    transform: rotate(20deg);
+    translate: -5px;
 }
 @media screen and (max-width: 1237px){
     .container{
@@ -191,6 +256,13 @@ form{
     .card{
         width: 40%;
     }
+    .inputPart{
+        height: 10rem;
+    }
+    input{
+        width: 50%;
+    }
+    
 } 
 @media screen and (max-width: 800px){
     .content h1{

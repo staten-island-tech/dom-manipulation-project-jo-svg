@@ -36,12 +36,19 @@ function Create_card(){
             return; // Exit the function if any field is empty
         }
         DOMSelectors.container.insertAdjacentHTML("beforeend",
-            /* `<div class="card"style="background-color: ${bg_color};">
+            `<div class="card"style="background-color: ${bg_color};">
             <img src="${url}" alt="">
             <h1>${header}</h1>
             <p> ${p}</p>
-            <button class="remove-btn">remove</button>
-            </div>` */
+            <button class="remove-btn">
+                <span class="trash">
+                    <span class="lid"></span>
+                    <span class="top"></span>
+                    <span class="bottom"></span>
+                </span>
+                DELETE
+            </button>
+            </div>`
         );
         /* DOMSelectors.header.value = '';
         DOMSelectors.bg_color.value = '';
