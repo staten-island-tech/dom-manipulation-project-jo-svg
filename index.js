@@ -1,45 +1,51 @@
 const DOMSelectors = {
     form: document.querySelector("form"),
-    header: document.querySelector(".header"),
     container: document.querySelector(".container"),
-    card: document.querySelector(".card"), 
+    
+    header: document.querySelector(".header"),
     bg_color: document.querySelector(".bg-color"),
     url: document.querySelector(".url"),
     p : document.querySelector(".paragraph")
-}
-document.addEventListener('scroll', () =>{
-    const nav = document.querySelector("nav")
+};
 
-    if (window.scrollY > 0){
+document.addEventListener('scroll', () => {
+    const nav = document.querySelector("nav");
+    if (window.scrollY > 0) {
         nav.classList.add('scrolled');
-    }
-    else{
+    } else {
         nav.classList.remove('scrolled');
     }
-})
-function Create_card(){
-    //create a function that only allows you to submit if all the stuff has an input, DO TS AT HOME 
-    let card_count = document.querySelectorAll(".card").length; 
-    //allows for you to see the amount of cards 
-    DOMSelectors.form.addEventListener("submit", function(event){
-        console.log("submit");
-        event.preventDefault(); 
+});
 
-        let p = DOMSelectors.p.value;
-        let header = DOMSelectors.header.value;
-        let url = DOMSelectors.url.value;
-        let bg_color = DOMSelectors.bg_color.value;
+function submit_info() {
+    DOMSelectors.form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
+        // Gather values from the form fields
+        const p = DOMSelectors.p.value;
+        const header = DOMSelectors.header.value;
+        const url = DOMSelectors.url.value;
+        const bg_color = DOMSelectors.bg_color.value;
+
+        // Validate input
         if (!header || !url || !bg_color || !p) {
             alert("Please fill in all fields.");
-            //alert sends an alert to the user (they have to press ok) if the function is true
             return; // Exit the function if any field is empty
         }
-        DOMSelectors.container.insertAdjacentHTML("beforeend",
-            `<div class="card"style="background-color: ${bg_color};">
-            <img src="${url}" alt="">
-            <h1>${header}</h1>
-            <p> ${p}</p>
+
+        // Create the card with the gathered info
+        createCard({ p, header, url, bg_color });
+        DOMSelectors.form.reset(); // Reset the form after submission
+        remove(); // Re-attach the remove functionality
+    });
+}
+
+function createCard(info) {
+    DOMSelectors.container.insertAdjacentHTML("beforeend",
+        `<div class="card" style="background-color: ${info.bg_color};">
+            <img src="${info.url}" alt="">
+            <h1>${info.header}</h1>
+            <p>${info.p}</p>
             <button class="remove-btn">
                 <span class="trash">
                     <span class="lid"></span>
@@ -48,26 +54,19 @@ function Create_card(){
                 </span>
                 DELETE
             </button>
-            </div>`
-        );
-        /* DOMSelectors.header.value = '';
-        DOMSelectors.bg_color.value = '';
-        DOMSelectors.url.value = '';
-        DOMSelectors.p.value = '';
-        //this makes the value back to nothing once the stuff is submited, ts is one way to do it*/
-        DOMSelectors.form.reset();
-
-        const remove_btn= document.querySelectorAll(".remove-btn");
-        remove_btn.forEach(button =>{
-            button.addEventListener("click", function(){
-            this.parentElement.remove();
-            //removes the parent of the button element
-        }); 
-    });
-});
+        </div>`
+    );
 }
 
-Create_card();
+function remove() {
+    const remove_btns = document.querySelectorAll(".remove-btn");
+    remove_btns.forEach(button => {
+        button.addEventListener("click", function () {
+            this.parentElement.remove(); // Removes the parent of the button element
+        });
+    });
+}
 
-
-
+// Initialize the form submission and button removal
+submit_info();
+remove(); // Initial call to set up remove buttons
