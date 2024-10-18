@@ -22,6 +22,7 @@ function main() {
         if (submit_info()) {
             createCard(DOMSelectors.p.value, DOMSelectors.header.value, DOMSelectors.url.value, DOMSelectors.bg_color.value);
             DOMSelectors.form.reset(); // Reset the form after submission
+            remove();
         }
     });
 };
@@ -55,7 +56,7 @@ function createCard(p, header, url, bg_color) {
             </button>
         </div>`
     );
-    remove();
+    
 };
 function remove() {
     const remove_btns = document.querySelectorAll(".remove-btn");
