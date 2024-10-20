@@ -14,18 +14,6 @@ document.addEventListener('scroll', () => {
         nav.classList.remove('scrolled');
     }
 });
-function main() {
-    DOMSelectors.form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        // Gather values and validate them before creating the card
-        if (submit_info()) {
-            createCard(DOMSelectors.p.value, DOMSelectors.header.value, DOMSelectors.url.value, DOMSelectors.bg_color.value);
-            DOMSelectors.form.reset(); // Reset the form after submission
-            remove();
-        }
-    });
-};
 function submit_info(){
     // Gather values from the form fields
     const p = DOMSelectors.p.value;
@@ -64,6 +52,20 @@ function remove() {
         button.addEventListener("click", function () {
             this.parentElement.remove(); // Removes the parent of the button element
         });
+    });
+};
+
+
+function main() {
+    DOMSelectors.form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Gather values and validate them before creating the card
+        if (submit_info()) {
+            createCard(DOMSelectors.p.value, DOMSelectors.header.value, DOMSelectors.url.value, DOMSelectors.bg_color.value);
+            DOMSelectors.form.reset(); // Reset the form after submission
+            remove();
+        }
     });
 };
 main();
